@@ -21,11 +21,14 @@
     "@ionic/react-router": "^8.5.0",
     "@types/react-router": "^5.1.20",
     "@types/react-router-dom": "^5.3.3",
+    "axios": "^1.15.0",
     "ionicons": "^7.4.0",
+    "lucide-react": "^1.8.0",
     "react": "19.0.0",
     "react-dom": "19.0.0",
     "react-router": "^5.3.4",
-    "react-router-dom": "^5.3.4"
+    "react-router-dom": "^5.3.4",
+    "scss": "^0.2.4"
   },
   "devDependencies": {
     "@capacitor/cli": "8.3.0",
@@ -44,6 +47,7 @@
     "eslint-plugin-react-refresh": "^0.4.19",
     "globals": "^15.15.0",
     "jsdom": "^22.1.0",
+    "sass-embedded": "^1.99.0",
     "terser": "^5.4.0",
     "typescript": "~5.9.0",
     "typescript-eslint": "^8.24.0",
