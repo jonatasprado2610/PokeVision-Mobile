@@ -83,7 +83,7 @@ const Home: React.FC = () => {
         selectedTypes={types}
       />
 
-      <IonContent  style={{ '--background': '#f5f5f5' }} className="pkdx-content">
+      <IonContent className="pkdx-content">
         {loading && <IonSpinner name="crescent" />}
 
         <div className="pkdx-grid">
