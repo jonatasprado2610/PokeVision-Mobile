@@ -27,8 +27,8 @@ const Home: React.FC = () => {
     const fetchData = async () => {
       setLoading(true);
       const [start, end] = genRanges[gen];
-      const limit = end + start + 1;
-      const offset = start - 1;
+      const limit = end - start + 1;  // ex: Gen I = 151 - 1 + 1 = 151
+      const offset = start - 1;       // ex: Gen I = 1 - 1 = 0
       const list = await pokemonService.getPokemonList(limit, offset); // pega mais pokémons para suportar várias gerações
 
       const detailsPromises = list.results.map(async (p: any) => {
@@ -74,7 +74,7 @@ const Home: React.FC = () => {
       types.length === 0 ||
       types.every((selectedType) =>
         p.types.some((pokemonType) => pokemonType.toLowerCase() === selectedType.toLowerCase())
-      );  
+      );
 
     return matchesQuery && matchesGen && matchesTypes;
   });

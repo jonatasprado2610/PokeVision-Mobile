@@ -1,5 +1,5 @@
 import axios from "axios";
-import { types } from "sass";
+
 
 const api = axios.create({
     baseURL: 'https://pokeapi.co/api/v2/'
@@ -18,7 +18,7 @@ export const pokemonService = {
 
     // busca lista de  pokemons
 
-    async getPokemonList(limit: number = 30, offset: number = 0) {
+    async getPokemonList(limit: number , offset: number ) {
         try {
             const response = await api.get(`pokemon?limit=${limit}&offset=${offset}`)
             return response.data;
