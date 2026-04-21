@@ -1,55 +1,46 @@
-// Reutiliza os estilos de Home.scss
 @import '../Home/Home.scss';
 
 .fav-header {
-  background: #e53935;
+  background: #ff3b3b; // Mantendo o padrão do Home
   color: #fff;
-  padding: 16px;
+  padding: 20px 16px 16px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+
+  .fav-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
 
   h1 {
     font-size: 22px;
     font-weight: 700;
     margin: 0;
   }
+
+  .btn-voltar {
+    --color: white;
+    font-weight: 600;
+    margin: 0;
+    font-size: 14px;
+  }
 }
 
 .fav-count {
   display: inline-block;
-  margin-top: 4px;
-  font-size: 13px;
+  margin-top: 8px;
+  font-size: 12px;
+  font-weight: 600;
   background: rgba(255, 255, 255, 0.2);
-  padding: 2px 12px;
+  padding: 4px 14px;
   border-radius: 999px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
+// Garante que o grid de favoritos tenha espaçamento
 .fav-content {
-  padding: 16px;
-}
-
-.fav-empty {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 80px 20px;
-  color: #aaa;
-  text-align: center;
-
-  .fav-empty-icon {
-    font-size: 64px;
-    opacity: 0.25;
-    margin-bottom: 20px;
-    color: #e74c3c;
-  }
-
-  h2 {
-    font-size: 20px;
-    color: #666;
-    margin-bottom: 8px;
-  }
-
-  p {
-    font-size: 14px;
-    color: #aaa;
+  .pkdx-grid {
+    padding: 16px;
   }
 }

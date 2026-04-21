@@ -1,5 +1,5 @@
 import { IonContent, IonPage } from '@ionic/react';
-import { IonCard, IonCardHeader, IonCardTitle, IonCardContent } from '@ionic/react';
+import { IonCard, IonCardHeader, IonCardTitle, IonCardContent, IonButton } from '@ionic/react';
 import { FaHeart } from 'react-icons/fa';
 import { useHistory } from 'react-router-dom';
 import { favoriteService, PokemonBasic } from '../../services/pokemonService';
@@ -23,7 +23,16 @@ const Favorites: React.FC = () => {
   return (
     <IonPage>
       <div className="fav-header">
-        <h1>❤️ Meus Favoritos</h1>
+        <div className="fav-header-top">
+          <h1>❤️ Meus Favoritos</h1>
+          <IonButton
+            fill="clear"
+            className="btn-voltar"
+            onClick={() => history.goBack()}
+          >
+            Voltar
+          </IonButton>
+        </div>
         <span className="fav-count">{favorites.length} pokémons salvos</span>
       </div>
 

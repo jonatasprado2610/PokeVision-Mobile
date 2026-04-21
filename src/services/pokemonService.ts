@@ -1,4 +1,5 @@
 import axios from "axios";
+import { types } from "sass";
 
 const api = axios.create({
     baseURL: 'https://pokeapi.co/api/v2/'
@@ -68,8 +69,13 @@ export const pokemonService = {
     // busca por tipo
     async getTypes() {
         try {
+            
             const response = await api.get('type');
-            return response.data;
+
+            return response.data.results.filter((t: any) =>
+              t.name !== 'unknown' && t.name !== 'shadow'
+            )
+        
         } catch (error) {
             console.error("Erro ao buscar tipos:", error);
             throw error;
@@ -96,41 +102,41 @@ export const pokemonService = {
 
 export const favoriteService = {
 
-  getFavorites(): PokemonBasic[] {
-    const favs = localStorage.getItem("pokedex_favorites");
-    return favs ? JSON.parse(favs) : [];
-  },
+    getFavorites(): PokemonBasic[] {
+        const favs = localStorage.getItem("pokedex_favorites");
+        return favs ? JSON.parse(favs) : [];
+    },
 
-  isFavorite(id: number): boolean {
-    return this.getFavorites().some((p) => p.id === id);
-  },
+    isFavorite(id: number): boolean {
+        return this.getFavorites().some((p) => p.id === id);
+    },
 
-  saveFavorite(pokemon: PokemonBasic) {
-    const favs = this.getFavorites();
-    if (!this.isFavorite(pokemon.id)) {
-      favs.push(pokemon);
-      localStorage.setItem("pokedex_favorites", JSON.stringify(favs));
-    }
-  },
+    saveFavorite(pokemon: PokemonBasic) {
+        const favs = this.getFavorites();
+        if (!this.isFavorite(pokemon.id)) {
+            favs.push(pokemon);
+            localStorage.setItem("pokedex_favorites", JSON.stringify(favs));
+        }
+    },
 
-  removeFavorite(id: number) {
-    const favs = this.getFavorites().filter((p) => p.id !== id);
-    localStorage.setItem("pokedex_favorites", JSON.stringify(favs));
-  },
+    removeFavorite(id: number) {
+        const favs = this.getFavorites().filter((p) => p.id !== id);
+        localStorage.setItem("pokedex_favorites", JSON.stringify(favs));
+    },
 
-  toggleFavorite(pokemon: PokemonBasic) {
-    if (this.isFavorite(pokemon.id)) {
-      this.removeFavorite(pokemon.id);
-    } else {
-      this.saveFavorite(pokemon);
-    }
-  },
+    toggleFavorite(pokemon: PokemonBasic) {
+        if (this.isFavorite(pokemon.id)) {
+            this.removeFavorite(pokemon.id);
+        } else {
+            this.saveFavorite(pokemon);
+        }
+    },
 };
 
 // Pokebola
 
 export const getRecommendedBall = (weight: number, isLegendary: boolean): string => {
-  if (isLegendary) return "Master Ball";
-  if (weight > 2000) return "Ultra Ball";
-  return "Poke Ball";
+    if (isLegendary) return "Master Ball";
+    if (weight > 2000) return "Ultra Ball";
+    return "Poke Ball";
 };

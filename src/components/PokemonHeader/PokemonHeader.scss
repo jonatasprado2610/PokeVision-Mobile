@@ -1,17 +1,58 @@
 /* Container geral */
 .pkdx-header-wrap {
+   background: #ff3b3b;
   position: sticky;
   top: 0;
   z-index: 100;
   backdrop-filter: blur(6px);
   width: 100%;
+  
+}
+
+.fav-page-btn {
+  background: rgba(255, 255, 255, 0.15); // Efeito vidro
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 13px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+
+  .fav-icon {
+    font-size: 14px;
+    color: #fff; // Ícone branco
+    transition: color 0.3s ease;
+  }
+
+  &:hover {
+    background: white;
+    color: #ff3b3b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+
+    .fav-icon {
+      color: #ff3b3b; // Ícone fica vermelho no hover
+    }
+  }
+
+  &:active {
+    transform: scale(0.95);
+  }
 }
 
 /* HEADER */
-.pkdx-top {
-  background: #ff3b3b;
-  padding: 16px 16px 12px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+.pkdx-top-row {
+  
+  display: flex;
+  justify-content: space-between; // Joga o título para um lado e botão para o outro
+  align-items: center;
+  margin-bottom: 16px;
 }
 
 /* BRAND */
@@ -19,8 +60,7 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-bottom: 12px;
-  flex-wrap: wrap;
+  margin-bottom: 0; // Removi o margin para alinhar com o botão
 }
 
 .pkdx-ball {
@@ -128,6 +168,7 @@
     box-shadow: 0 4px 10px rgba(0,0,0,0.15);
   }
 
+
   &:active {
     transform: scale(0.95);
   }
@@ -136,6 +177,8 @@
     font-size: 14px;
   }
 }
+
+
 
 /* ── Responsividade ── */
 @media (max-width: 768px) {
@@ -172,4 +215,6 @@
     gap: 6px;
     padding: 8px;
   }
+
+  
 }

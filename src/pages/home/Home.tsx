@@ -26,7 +26,10 @@ const Home: React.FC = () => {
   useEffect(() => {
     const fetchData = async () => {
       setLoading(true);
-      const list = await pokemonService.getPokemonList(300, 0); // pega mais pokémons para suportar várias gerações
+      const [start, end] = genRanges[gen];
+      const limit = end + start + 1;
+      const offset = start - 1;
+      const list = await pokemonService.getPokemonList(limit, offset); // pega mais pokémons para suportar várias gerações
 
       const detailsPromises = list.results.map(async (p: any) => {
         const data = await pokemonService.getPokemonDetails(p.name);
@@ -44,7 +47,7 @@ const Home: React.FC = () => {
     };
 
     fetchData();
-  }, []);
+  }, [gen]);
 
   // Função auxiliar para mapear geração -> intervalo de IDs
   const genRanges: Record<string, [number, number]> = {
@@ -55,8 +58,8 @@ const Home: React.FC = () => {
     V: [494, 649],
     VI: [650, 721],
     VII: [722, 809],
-    VIII: [810, 898],
-    IX: [899, 1010],
+    VIII: [810, 905],
+    IX: [906, 1025]
   };
 
   const filteredPokemons = pokemons.filter((p) => {
@@ -68,7 +71,10 @@ const Home: React.FC = () => {
     const matchesGen = p.id >= start && p.id <= end;
 
     const matchesTypes =
-      types.length === 0 || types.every((t) => p.types.includes(t.toLowerCase()));
+      types.length === 0 ||
+      types.every((selectedType) =>
+        p.types.some((pokemonType) => pokemonType.toLowerCase() === selectedType.toLowerCase())
+      );  
 
     return matchesQuery && matchesGen && matchesTypes;
   });
@@ -83,7 +89,7 @@ const Home: React.FC = () => {
         selectedTypes={types}
       />
 
-      <IonContent  style={{ '--background': '#f5f5f5' }} className="pkdx-content">
+      <IonContent style={{ '--background': '#f5f5f5' }} className="pkdx-content">
         {loading && <IonSpinner name="crescent" />}
 
         <div className="pkdx-grid">

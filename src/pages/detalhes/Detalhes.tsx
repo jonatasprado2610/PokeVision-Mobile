@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { IonPage, IonContent, IonSpinner } from '@ionic/react';
+import { IonPage, IonContent, IonSpinner, IonButton } from '@ionic/react';
 import { useParams, useHistory } from 'react-router-dom';
 import { pokemonService, favoriteService } from '../../services/pokemonService';
 import { FaHeart, FaArrowLeft } from 'react-icons/fa';
@@ -73,7 +73,7 @@ const PokemonDetail: React.FC = () => {
           <span className="header-id">#{String(pokemon.id).padStart(3, '0')}</span>
         </div>
 
-        {/* Hero */}
+        
         <div className="detail-hero">
           <button
             className={`fav-btn ${favoriteService.isFavorite(pokemon.id) ? 'active' : ''}`}
