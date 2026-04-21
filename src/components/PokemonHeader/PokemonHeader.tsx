@@ -79,6 +79,7 @@ const PokemonHeader: React.FC<Props> = ({
               '--background': '#fff',
               '--box-shadow': 'none',
               '--padding-start': '12px',
+              '--color': 'black'
             }}
           />
         </div>
